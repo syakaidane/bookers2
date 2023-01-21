@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "homes/about" => "homes#about", as: "about"
   resources :users, :books
+  post 'books' => 'books#create'
+  post 'users' => 'users#create'
+  patch 'users/:id' => 'users#update', as: 'update_user'
+  patch 'books/:id' => 'books#update', as: 'update_book'
 end
