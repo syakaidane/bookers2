@@ -1,4 +1,37 @@
+<h2>User info</h2>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>
+        <%= image_tag @user.get_profile_image %>
+      </th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th><%= @user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= @user.introduction %></th>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_user_path(@user.id) %>
+
+<h2>New book</h2>
+<%= form_with model: @book do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book' %>
+<% end %>
+
 Users
+<% @users.each do |user| %>
 <table class="table">
   <thead>
       <tr>
@@ -9,15 +42,10 @@ Users
   </thead>
   <tbody>
     <tr>
-      <td>
-        <% if @user.profile_image.attached? %>
-          <%= @user.profile_image %>
-        <% else %>
-          <%= image_tag 'no_image' %>
-        <% end %>
-      </td>
-      <td><%= @user.name %></td>
-      <td><%= link_to 'Show', user_path(current_user.id) %></td>
+      <td><%= image_tag user.get_profile_image %></td>
+      <td><%= user.name %></td>
+      <td><%= link_to 'Show', user_path(user.id) %></td>
     </tr>
   </tbody>
 </table>
+<% end %>
