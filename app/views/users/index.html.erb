@@ -18,7 +18,11 @@
         </tbody>
       </table>
 
-      <%= link_to 'Edit', edit_user_path(@user.id) %>
+      <div class="row">
+      <%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+      <% end %>
+      </div>
 
       <h2>New book</h2>
       <%= form_with model: @book do |f| %>
@@ -33,8 +37,8 @@
     </div>
     
     <div class="col-md-8 offset-md-1">
-      Users
-      <% @users.each do |user| %>
+      <h2>Users</h2>
+      
       <table class="table">
         <thead>
           <tr>
@@ -44,14 +48,15 @@
           </tr>
         </thead>
         <tbody>
+          <% @users.each do |user| %>
           <tr>
             <td><%= image_tag user.get_profile_image %></td>
             <td><%= user.name %></td>
             <td><%= link_to 'Show', user_path(user.id) %></td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-<% end %>
