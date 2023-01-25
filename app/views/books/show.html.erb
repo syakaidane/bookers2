@@ -13,17 +13,17 @@
           </tr>
           <tr>
             <th>name</th>
-            <th><%= current_user.name %></th>
+            <th><%= @user.name %></th>
           </tr>
           <tr>
             <th>introduction</th>
-            <th><%= current_user.introduction %></th>
+            <th><%= @user.introduction %></th>
           </tr>
         </tbody>
       </table>
 
       <div class="row">
-      <%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
+      <%= link_to edit_user_path(@user.id), class:"btn btn-outline-secondary btn-block" do %>
       <i class="fas fa-user-cog"></i>
       <% end %>
       </div>
@@ -40,7 +40,7 @@
         <%= f.submit 'Create Book' %>
       <% end %>
     </div>
-    
+
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
